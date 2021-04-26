@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 
 const ConstructionModel = require('../Schemas/construction');
 
-const mongoDB = process.env.MONGO_URL_PROD || process.env.MONGO_URL_DEV;
+const mongoDB = process.env.MONGO_URL_PROD;
+
+console.log("mongodbstring: ", mongoDB);
 
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 
