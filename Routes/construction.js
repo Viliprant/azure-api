@@ -6,7 +6,11 @@ const ConstructionModel = require('../Schemas/construction');
 
 const mongoDB = process.env.MONGO_URL_PROD || process.env.MONGO_URL_DEV;
 
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+try{
+  mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+}catch(e){
+  console.error(e.message);
+}
 
 // const db = mongoose.connection;
 
