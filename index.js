@@ -3,12 +3,16 @@ require('dotenv').config()
 const helmet = require("helmet");
 const cors = require('cors')
 
-const construction = require("./Routes/construction")
+const constructionJson = require("./Routes/constructionJson")
+const constructionView = require("./Routes/constructionView")
 
 const app = express();
 
 app.use(helmet());
 app.use(cors());
+
+app.set('views', './views')
+app.set('view engine', 'pug'); // rendering template
 
 const port = process.env.TEST_VAR || 8080;
 
@@ -18,7 +22,8 @@ app.get('/', (req, res, next) => {
     });
 })
 
-app.use("/construction", construction)
+app.use("/construction/json", constructionJson)
+app.use("/construction/view", constructionView)
 
 app.use((req, res, next) => {
     res.status(404);

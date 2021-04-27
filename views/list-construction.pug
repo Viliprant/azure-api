@@ -1,0 +1,92 @@
+html
+  head
+    title= 'View'
+    style
+      include style.css
+  body
+    h1= 'List of constructions'
+
+    section
+        if !Array.isArray(construction)
+            section(class='construction')
+                div
+                    div(class='info-construction')
+                        p= 'ID'
+                        p= construction['ID']
+                    div(class='info-construction')
+                        p= 'Code Chorus'
+                        p= construction['Code Chorus']
+                div(class='info-construction')
+                    p= 'Désignation Bâtiment/Terrain'
+                    p= construction['Désignation Bâtiment/Terrain']
+                div
+                    div(class='info-construction')
+                        p= 'Type'
+                        p= construction['Type']
+                    div(class='info-construction')
+                        p= 'Fonction'
+                        p= construction['Fonction']
+                div(class='space-between')
+                    div(class='info-construction')
+                        p= 'Région'
+                        p= construction['Région']
+                    div(class='info-construction')
+                        p= 'Dept'
+                        p= construction['Dept']
+                    div(class='info-construction')
+                        p= 'Adresse'
+                        p= construction['Adresse']
+                    div(class='info-construction')
+                        p= 'Code Postal'
+                        p= construction['Code Postal']
+                    div(class='info-construction')
+                        p= 'Ville'
+                        p= construction['Ville']
+                    div(class='info-construction')
+                        p= 'Pays'
+                        p= construction['Pays']
+                div(class='info-construction')
+                    p= 'Ministère'
+                    p= construction['Ministère']
+        else
+            each item in construction
+                section(class='construction')
+                    div
+                        div(class='info-construction')
+                            p= 'ID'
+                            p= item['ID']
+                        div(class='info-construction')
+                            p= 'Code Chorus'
+                            p= item['Code Chorus']
+                    div(class='info-construction')
+                        p= 'Désignation Bâtiment/Terrain'
+                        p= item['Désignation Bâtiment/Terrain']
+                    div
+                        div(class='info-construction')
+                            p= 'Type'
+                            p= item['Type']
+                        div(class='info-construction')
+                            p= 'Fonction'
+                            p= item['Fonction']
+                    div(class='space-between')
+                        div(class='info-construction')
+                            p= 'Région'
+                            p= item['Région']
+                        div(class='info-construction')
+                            p= 'Dept'
+                            p= item['Dept']
+                        div(class='info-construction')
+                            p= 'Adresse'
+                            p= item['Adresse']
+                        div(class='info-construction')
+                            p= 'Code Postal'
+                            p= item['Code Postal']
+                        div(class='info-construction')
+                            p= 'Ville'
+                            p= item['Ville']
+                        div(class='info-construction')
+                            p= 'Pays'
+                            p= item['Pays']
+                    div(class='info-construction')
+                        p= 'Ministère'
+                        p= item['Ministère']
