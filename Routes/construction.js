@@ -13,7 +13,7 @@ try{
 }
 
 router.use((req, res, next) => {
-  console.log(`${new Date().toLocaleString()} - Access to construction`);
+  console.log(`${new Date().toLocaleString()} - Access to construction :`, req.originalUrl);
   next();
 })
 
