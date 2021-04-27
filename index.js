@@ -11,7 +11,6 @@ app.use(helmet());
 app.use(cors());
 
 const port = process.env.TEST_VAR || 8080;
-// const port = 8080;
 
 app.get('/', (req, res, next) => {
     res.json({
@@ -27,5 +26,5 @@ app.use((req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`App listening at http://localhost:${port}`)
 })

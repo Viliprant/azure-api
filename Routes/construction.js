@@ -12,6 +12,12 @@ try{
   console.error(e.message);
 }
 
+router.use((req, res, next) => {
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  console.log(`${new Date().toLocaleString()} - Access to construction`);
+  next();
+})
+
 router.get('/', function(req, res) {
   res.send('Home page : Construction');
 });
