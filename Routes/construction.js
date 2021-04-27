@@ -13,7 +13,6 @@ try{
 }
 
 router.use((req, res, next) => {
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   console.log(`${new Date().toLocaleString()} - Access to construction`);
   next();
 })
