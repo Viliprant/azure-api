@@ -12,90 +12,120 @@ try{
   console.error(e.message);
 }
 
-// const db = mongoose.connection;
-
 router.get('/', function(req, res) {
   res.send('Home page : Construction');
 });
 
 router.get('/id/:id', async (req, res, next) => {
-  const construction = await ConstructionModel.findOne({
-    "ID": req.params.id
-  });
-
-  if(!construction){
-    return next("ID not found");
+  try{
+    const construction = await ConstructionModel.findOne({
+      "ID": req.params.id
+    });
+    
+    if(!construction)
+    {
+      return next("ID not found");
+    }
+    
+    return res.json(construction);
+  }catch(e){
+    console.error(e.message);
+    return next("Error while accessing DB");
   }
-  
-  return res.json(construction);
 });
 
 router.get('/country/:country', async (req, res, next) => {
   const country = req.params.country.split("_").join(" ");
-
-  const construction = await ConstructionModel.find({
-    "Région": country
-  });
-
-  if(!construction){
-    return next("ID not found");
-  }
   
-  return res.json(construction);
+  try{
+    const construction = await ConstructionModel.find({
+      "Région": country
+    });
+  
+    if(!construction){
+      return next("ID not found");
+    }
+    
+    return res.json(construction);
+  }catch(e){
+    console.error(e.message);
+    return next("Error while accessing DB");
+  }
 });
 
 router.get('/type/:type', async (req, res, next) => {
   const type = req.params.type.split("_").join(" ");
 
-  const construction = await ConstructionModel.find({
-    "Type": type
-  });
-
-  if(!construction){
-    return next("ID not found");
-  }
+  try{
+    const construction = await ConstructionModel.find({
+      "Type": type
+    });
   
-  return res.json(construction);
+    if(!construction){
+      return next("ID not found");
+    }
+    
+    return res.json(construction);
+  }catch(e){
+    console.error(e.message);
+    return next("Error while accessing DB");
+  }
 });
 
 router.get('/function/:function', async (req, res, next) => {
   const functionConstruction = req.params.function.split("_").join(" ");
 
-  const construction = await ConstructionModel.find({
-    "Fonction": functionConstruction
-  });
-
-  if(!construction){
-    return next("ID not found");
-  }
+  try{
+    const construction = await ConstructionModel.find({
+      "Fonction": functionConstruction
+    });
   
-  return res.json(construction);
+    if(!construction){
+      return next("ID not found");
+    }
+    
+    return res.json(construction);
+  }catch(e){
+    console.error(e.message);
+    return next("Error while accessing DB");
+  }
 });
 
 router.get('/dept/:dept', async (req, res, next) => {
   const dept = req.params.dept.split("_").join(" ");
 
-  const construction = await ConstructionModel.find({
-    "Dept": dept
-  });
-
-  if(!construction){
-    return next("ID not found");
-  }
+  try{
+    const construction = await ConstructionModel.find({
+      "Dept": dept
+    });
   
-  return res.json(construction);
+    if(!construction){
+      return next("ID not found");
+    }
+
+    return res.json(construction);
+  }catch(e){
+    console.error(e.message);
+    return next("Error while accessing DB");
+  }  
 });
 
 router.get('/zip-code/:zipcode', async (req, res, next) => {
-  const construction = await ConstructionModel.find({
-    "Code Postal": req.params.zipcode
-  });
-
-  if(!construction){
-    return next("ID not found");
+  try{
+    const construction = await ConstructionModel.find({
+      "Code Postal": req.params.zipcode
+    });
+  
+    if(!construction){
+      return next("ID not found");
+    }
+    
+    return res.json(construction);
+  }catch(e){
+    console.error(e.message);
+    return next("Error while accessing DB");
   }
   
-  return res.json(construction);
 });
 
 router.use((err, req, res, next) => {
